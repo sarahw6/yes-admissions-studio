@@ -200,9 +200,28 @@ export default function App() {
               </div>
             ))}
           </div>
-          <div style={{ textAlign: "center" }}>
-            <a href="mailto:sarahwangmph@gmail.com?subject=Workshop%20Registration%20–%20Feb%2028" style={{ display: "inline-block", background: C.gold, color: C.navy, border: "none", padding: "16px 48px", borderRadius: 10, fontWeight: 700, fontFamily: dm, fontSize: 16, cursor: "pointer", textDecoration: "none" }}>Register Free</a>
-            <div style={{ marginTop: 20, fontFamily: dm, fontSize: 13, color: C.gray }}>✉️ sarahwangmph@gmail.com · 🔗 linkedin.com/in/sarahjmwang</div>
+          <div style={{ background: C.navyL, borderRadius: 14, padding: "28px 32px", border: `1px solid ${C.gold}20` }}>
+            <h3 style={{ color: C.white, fontSize: 18, fontWeight: 600, textAlign: "center", marginBottom: 20 }}>Register for the Free Workshop</h3>
+            <form action="https://formsubmit.co/sarahwangmph@gmail.com" method="POST" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <input type="hidden" name="_subject" value="New Workshop Registration – Feb 28" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="https://sarahwangmph.com" />
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <input name="First Name" placeholder="First name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
+                <input name="Last Name" placeholder="Last name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
+              </div>
+              <input name="email" type="email" placeholder="Email address" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
+              <select name="MPH Interest" defaultValue="" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none", appearance: "auto" }}>
+                <option value="" disabled>Where are you in the process?</option>
+                <option value="Researching programs">Researching programs</option>
+                <option value="Planning to apply this cycle">Planning to apply this cycle</option>
+                <option value="Currently applying">Currently applying</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+              <button type="submit" style={{ background: C.gold, color: C.navy, border: "none", padding: "14px", borderRadius: 8, fontWeight: 700, fontFamily: dm, fontSize: 15, cursor: "pointer", marginTop: 4 }}>Register Free</button>
+            </form>
+            <p style={{ textAlign: "center", fontFamily: dm, fontSize: 12, color: C.gray, marginTop: 14 }}>You'll receive a confirmation email with the workshop link.</p>
           </div>
         </div>
       </div>
