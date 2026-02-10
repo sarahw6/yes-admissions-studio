@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>MPH Admissions Workshop Workbook</title>
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  @media print { body { background: none; } .page { box-shadow: none; } }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ccc; font-family: 'DM Sans', -apple-system, Helvetica, sans-serif; color: #1a1f3a; }
+  .page {
+    width: 8.5in; height: 11in;
+    background: #fff;
+    position: relative; overflow: hidden;
+    page-break-after: always;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .page:last-child { page-break-after: auto; }
+  @media screen { .page { margin: 20px auto; } }
+
+  /* Colors */
+  :root {
+    --navy: #1a1f3a;
+    --navyL: #252b4d;
+    --gold: #c9a84c;
+    --goldL: #e8d5a0;
+    --cream: #faf7f2;
+    --rose: #d4736e;
+    --gray: #8a8578;
+    --light: #6b6560;
+  }
+
+  /* Typography */
+  .serif { font-family: 'Crimson Pro', Georgia, serif; }
+  .sans { font-family: 'DM Sans', -apple-system, Helvetica, sans-serif; }
+
+  /* Shared elements */
+  .page-num {
+    position: absolute; bottom: 28px; right: 40px;
+    font-size: 11px; color: var(--gray); letter-spacing: 1px;
+  }
+  .page-footer {
+    position: absolute; bottom: 28px; left: 40px;
+    font-size: 10px; color: #bbb; letter-spacing: 0.5px;
+  }
+  .gold-line {
+    width: 50px; height: 2px; background: var(--gold); margin: 16px 0;
+  }
+  .section-tag {
+    font-size: 10px; color: var(--gold); letter-spacing: 3px;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 8px;
+  }
+  .write-line {
+    border-bottom: 1px solid #e0ddd8; height: 32px; width: 100%;
+  }
+  .write-line-sm {
+    border-bottom: 1px solid #e0ddd8; height: 26px; width: 100%;
+  }
+  .checkbox-row {
+    display: flex; align-items: flex-start; gap: 10px; margin-bottom: 7px;
+  }
+  .checkbox {
+    width: 16px; height: 16px; border: 1.5px solid var(--navy);
+    border-radius: 3px; flex-shrink: 0; margin-top: 2px;
+  }
+  .checkbox-text { font-size: 13px; line-height: 1.5; color: #333; }
+
+  /* ==================== PAGE 1: COVER ==================== */
+  .cover {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navyL) 40%, var(--navy) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 40px 60px;
+  }
+  .cover::before {
+    content: ''; position: absolute; top: -150px; right: -100px;
+    width: 450px; height: 450px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+  }
+  .cover .top-line, .cover .bot-line {
+    position: absolute; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+  }
+  .cover .top-line { top: 0; }
+  .cover .bot-line { bottom: 0; }
+
+  /* ==================== PAGE STYLES ==================== */
+  .content-page { padding: 48px 52px 60px; }
+  .content-page h2 {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 28px; font-weight: 300; color: var(--navy); margin-bottom: 4px;
+  }
+  .content-page h2 strong { font-weight: 700; color: var(--navy); }
+  .content-page h3 {
+    font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 12px;
+  }
+  .intro-text {
+    font-size: 14px; color: var(--light); line-height: 1.7; margin-bottom: 24px;
+  }
+  .tip-box {
+    background: var(--cream); border-left: 3px solid var(--gold);
+    padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 16px 0;
+  }
+  .tip-box .tip-label {
+    font-size: 10px; color: var(--gold); letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 700; margin-bottom: 6px;
+  }
+  .tip-box p { font-size: 13px; color: var(--light); line-height: 1.6; }
+  .numbered-item {
+    display: flex; gap: 16px; margin-bottom: 20px;
+  }
+  .num-circle {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--navy);
+    color: var(--gold); font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .num-content h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .num-content p { font-size: 12px; color: var(--light); line-height: 1.5; }
+  .two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* Table styles */
+  .worksheet-table {
+    width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px;
+  }
+  .worksheet-table th {
+    background: var(--navy); color: var(--gold); padding: 10px 12px;
+    text-align: left; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .worksheet-table td {
+    padding: 10px 12px; border-bottom: 1px solid #eee; color: #333;
+    vertical-align: top;
+  }
+  .worksheet-table tr:nth-child(even) td { background: #faf9f7; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page cover">
+  <div class="top-line"></div>
+  <div style="position:relative;z-index:1;">
+    <div style="font-size:12px;color:var(--goldL);letter-spacing:4px;text-transform:uppercase;font-weight:600;margin-bottom:24px;" class="sans">Yes Admissions Studio</div>
+    <h1 class="serif" style="font-size:46px;font-weight:300;color:#fff;line-height:1.15;margin-bottom:12px;">
+      <span style="color:var(--gold);font-weight:700;">MPH Admissions</span><br>Workshop Workbook
+    </h1>
+    <div style="width:60px;height:2px;background:var(--gold);margin:16px auto;opacity:0.4;"></div>
+    <p class="sans" style="font-size:16px;color:var(--goldL);margin-bottom:8px;">Saturday, February 28, 2026 · 1:00 PM EST</p>
+    <p class="sans" style="font-size:13px;color:var(--gray);margin-bottom:36px;">Hosted by Sarah J.M. Wang, MPH · Harvard Chan '25</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;">
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:8px;padding:8px 18px;">
+        <span class="sans" style="font-size:12px;color:var(--goldL);font-weight:600;">4/4 Ivy MPH Admits</span>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:8px;padding:8px 18px;">
+        <span class="sans" style="font-size:12px;color:var(--goldL);font-weight:600;">100% Client Acceptance Rate</span>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:8px;padding:8px 18px;">
+        <span class="sans" style="font-size:12px;color:var(--goldL);font-weight:600;">3/3 Admitted to Harvard MPH</span>
+      </div>
+    </div>
+    <p class="sans" style="font-size:12px;color:var(--gray);">sarahwangmph.com · sarahwangmph@gmail.com</p>
+    <p class="sans" style="font-size:11px;color:rgba(232,213,160,0.3);margin-top:12px;">Google Meet: meet.google.com/kmp-gytu-wuw</p>
+  </div>
+  <div class="bot-line"></div>
+</div>
+
+<!-- ==================== PAGE 2: WORKSHOP OVERVIEW ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Section 01</div>
+  <h2 class="serif">Workshop <strong>Overview</strong></h2>
+  <div class="gold-line"></div>
+  <p class="intro-text">Welcome! This workbook is your companion guide for today's workshop. Use it to take notes, work through exercises, and build your personalized MPH application plan. Keep it — it's yours to reference throughout the application cycle.</p>
+
+  <h3>What We'll Cover Today</h3>
+  <div style="margin-bottom:28px;">
+    <div class="numbered-item">
+      <div class="num-circle">1</div>
+      <div class="num-content"><h4>Building a Competitive MPH Application</h4><p>The core components admissions committees evaluate and how to strengthen each one.</p></div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">2</div>
+      <div class="num-content"><h4>School Selection Strategy</h4><p>How to build a balanced list of reach, target, and likely schools based on your profile.</p></div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">3</div>
+      <div class="num-content"><h4>Personal Statement Frameworks</h4><p>Proven structures for crafting a compelling narrative that stands out.</p></div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">4</div>
+      <div class="num-content"><h4>SOPHAS Optimization & Timeline</h4><p>How to navigate the centralized application system and manage deadlines.</p></div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">5</div>
+      <div class="num-content"><h4>What Admissions Committees Look For</h4><p>Insider perspective on how applications are reviewed and what tips the scale.</p></div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">How to Use This Workbook</div>
+    <p>Follow along with each section during the workshop. Fill in the worksheets as we go — they're designed to help you start building your application plan today. The blank lines are for your notes and reflections.</p>
+  </div>
+
+  <div class="page-footer">Yes Admissions Studio · sarahwangmph.com</div>
+  <div class="page-num">2</div>
+</div>
+
+<!-- ==================== PAGE 3: APPLICATION COMPONENTS ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Section 02</div>
+  <h2 class="serif">Building a <strong>Competitive Application</strong></h2>
+  <div class="gold-line"></div>
+  <p class="intro-text">MPH admissions committees evaluate your application holistically. Here are the key components and how to make each one count.</p>
+
+  <h3>The 7 Core Components</h3>
+  <div style="margin-bottom:12px;">
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Academic Record (GPA & Coursework)</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Strong GPA matters; an upward trend and relevant coursework can compensate.</div></div></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Standardized Tests (GRE, if required)</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Many programs are now test-optional. Know which schools require it.</div></div></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Personal Statement / Statement of Purpose</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Your most important essay. Shows motivation, clarity, and writing ability.</div></div></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Resume / CV</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Highlight research, public health work, leadership, and community impact.</div></div></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Letters of Recommendation (typically 3)</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Choose recommenders who know you well and can speak to your potential.</div></div></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Relevant Experience</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Research, internships, clinical work, community health, policy, fieldwork.</div></div></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div><div class="checkbox-text"><strong>Supplemental Essays & School-Specific Questions</strong></div><div style="font-size:10px;color:var(--light);line-height:1.4;margin-top:1px;">Show genuine fit — reference specific faculty, concentrations, or opportunities.</div></div></div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">Pro Tip</div>
+    <p>The applications that stand out have a clear, authentic narrative thread connecting past experience to public health goals. Start identifying your thread now.</p>
+  </div>
+
+  <h3 style="margin-top:16px;">Self-Assessment: Rate Your Current Readiness (1–5)</h3>
+  <table class="worksheet-table">
+    <thead><tr><th style="width:45%;">Component</th><th style="width:20%;">Rating (1–5)</th><th>Notes / Action Items</th></tr></thead>
+    <tbody>
+      <tr><td>Academic Record</td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td>Test Scores</td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td>Personal Statement</td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td>Resume / CV</td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td>Recommendations</td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td>Relevant Experience</td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">Yes Admissions Studio · sarahwangmph.com</div>
+  <div class="page-num">3</div>
+</div>
+
+<!-- ==================== PAGE 4: SCHOOL SELECTION ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Section 03</div>
+  <h2 class="serif">School <strong>Selection Strategy</strong></h2>
+  <div class="gold-line"></div>
+  <p class="intro-text">A strategic school list balances ambition with realism. Aim for 5–10 schools across three tiers: reach, target, and likely. Consider ranking, concentration fit, location, funding, faculty research, and cohort culture.</p>
+
+  <h3>Key Factors for School Selection</h3>
+  <div class="two-col-grid" style="margin-bottom:24px;">
+    <div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Program ranking & reputation in your concentration</div></div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Faculty whose research aligns with your interests</div></div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Concentration / specialization options</div></div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Practicum & field placement opportunities</div></div>
+    </div>
+    <div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Funding, scholarships & assistantships</div></div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Location & cost of living</div></div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Cohort size & culture</div></div>
+      <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text">Career outcomes & alumni network</div></div>
+    </div>
+  </div>
+
+  <h3>Your School List Worksheet</h3>
+  <table class="worksheet-table">
+    <thead><tr><th>School</th><th>Tier</th><th>Concentration</th><th>Deadline</th><th>Why This School?</th></tr></thead>
+    <tbody>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td><td><div class="write-line-sm"></div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box" style="margin-top:16px;">
+    <div class="tip-label">Tier Guide</div>
+    <p><strong>Reach:</strong> Top 5 programs or those where your stats are below the median. <strong>Target:</strong> Programs where your profile is competitive. <strong>Likely:</strong> Schools where you exceed the typical admitted student profile.</p>
+  </div>
+
+  <div class="page-footer">Yes Admissions Studio · sarahwangmph.com</div>
+  <div class="page-num">4</div>
+</div>
+
+<!-- ==================== PAGE 5: PERSONAL STATEMENT ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Section 04</div>
+  <h2 class="serif">Personal Statement <strong>Framework</strong></h2>
+  <div class="gold-line"></div>
+  <p class="intro-text">Your personal statement is the single most important piece of your application. It should answer three questions: Why public health? Why this program? Why you?</p>
+
+  <h3>The 4-Part Framework</h3>
+  <div style="margin-bottom:20px;">
+    <div class="numbered-item">
+      <div class="num-circle">1</div>
+      <div class="num-content">
+        <h4>The Hook (1–2 paragraphs)</h4>
+        <p>Open with a specific moment, experience, or observation that sparked your interest in public health. Be concrete — not "I've always been passionate about health."</p>
+      </div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">2</div>
+      <div class="num-content">
+        <h4>The Journey (2–3 paragraphs)</h4>
+        <p>Show how your academic and professional experiences built your understanding of public health. Connect the dots between your experiences and your evolving goals.</p>
+      </div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">3</div>
+      <div class="num-content">
+        <h4>The Vision (1–2 paragraphs)</h4>
+        <p>Articulate your specific goals: What public health problem do you want to solve? What skills do you need? How will an MPH get you there?</p>
+      </div>
+    </div>
+    <div class="numbered-item">
+      <div class="num-circle">4</div>
+      <div class="num-content">
+        <h4>The Fit (1 paragraph)</h4>
+        <p>Why this specific program? Name faculty, concentrations, practicum opportunities, or unique features that align with your goals.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Brainstorm Your Narrative</h3>
+  <p style="font-size:12px;color:var(--light);margin-bottom:12px;">Use these prompts to start drafting your story arc.</p>
+
+  <div style="margin-bottom:8px;font-size:13px;font-weight:600;color:var(--navy);">What moment first drew you to public health?</div>
+  <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+
+  <div style="margin-top:16px;margin-bottom:8px;font-size:13px;font-weight:600;color:var(--navy);">What experience most shaped your understanding of health inequity?</div>
+  <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+
+  <div style="margin-top:16px;margin-bottom:8px;font-size:13px;font-weight:600;color:var(--navy);">What specific public health problem do you want to work on after your MPH?</div>
+  <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+
+  <div class="page-footer">Yes Admissions Studio · sarahwangmph.com</div>
+  <div class="page-num">5</div>
+</div>
+
+<!-- ==================== PAGE 6: SOPHAS & TIMELINE ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Section 05</div>
+  <h2 class="serif">SOPHAS <strong>Optimization & Timeline</strong></h2>
+  <div class="gold-line"></div>
+  <p class="intro-text">SOPHAS (Schools of Public Health Application Service) is the centralized application for most MPH, MSPH, MHS, MHA, DrPH, and PhD programs. Understanding how it works gives you a strategic advantage.</p>
+
+  <h3>SOPHAS Quick Facts</h3>
+  <div class="two-col-grid" style="margin-bottom:24px;">
+    <div style="background:var(--cream);border-radius:10px;padding:16px;">
+      <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:6px;">FEES</div>
+      <div style="font-size:13px;line-height:1.6;">$150 for first program<br>$60 each additional program</div>
+    </div>
+    <div style="background:var(--cream);border-radius:10px;padding:16px;">
+      <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:6px;">PROCESSING</div>
+      <div style="font-size:13px;line-height:1.6;">4–6 weeks for verification<br>Submit early to avoid delays</div>
+    </div>
+  </div>
+
+  <h3>Application Timeline</h3>
+  <table class="worksheet-table">
+    <thead><tr><th style="width:25%;">When</th><th style="width:35%;">What to Do</th><th>Your Deadline</th></tr></thead>
+    <tbody>
+      <tr><td><strong>12+ months before</strong></td><td>Research programs, take GRE if needed, build experience</td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><strong>9–12 months before</strong></td><td>Finalize school list, start personal statement drafts</td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><strong>6–9 months before</strong></td><td>Request recommendations, order transcripts</td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><strong>4–6 months before</strong></td><td>Create SOPHAS account, begin entering data</td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><strong>2–4 months before</strong></td><td>Finalize essays, submit SOPHAS for verification</td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><strong>Deadline month</strong></td><td>Submit supplemental applications, confirm materials</td><td><div class="write-line-sm"></div></td></tr>
+      <tr><td><strong>After submission</strong></td><td>Interview prep, follow up, waitlist strategy</td><td><div class="write-line-sm"></div></td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box" style="margin-top:16px;">
+    <div class="tip-label">SOPHAS Pro Tips</div>
+    <p>Submit your application at least 4–6 weeks before the program deadline to allow for SOPHAS verification. Enter your coursework exactly as it appears on your transcript. Use the "Academic Update" feature if your grades change after submission.</p>
+  </div>
+
+  <div class="page-footer">Yes Admissions Studio · sarahwangmph.com</div>
+  <div class="page-num">6</div>
+</div>
+
+<!-- ==================== PAGE 7: WHAT ADCOMS LOOK FOR ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Section 06</div>
+  <h2 class="serif">What Admissions Committees <strong>Look For</strong></h2>
+  <div class="gold-line"></div>
+  <p class="intro-text">Having been through the process at four Ivy League programs, here's what I've learned about how applications are evaluated — and what separates admitted students from the rest.</p>
+
+  <h3>The Evaluation Matrix</h3>
+  <table class="worksheet-table" style="margin-bottom:20px;">
+    <thead><tr><th style="width:30%;">What They Evaluate</th><th style="width:35%;">What Strong Looks Like</th><th>Common Mistakes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Clarity of purpose</strong></td><td>Specific goals tied to a public health problem</td><td>Vague statements like "I want to help people"</td></tr>
+      <tr><td><strong>Relevant experience</strong></td><td>Research, fieldwork, community health, or policy work</td><td>Listing experiences without connecting them to PH</td></tr>
+      <tr><td><strong>Academic preparation</strong></td><td>Strong quantitative coursework, upward GPA trend</td><td>Not addressing academic weaknesses</td></tr>
+      <tr><td><strong>Program fit</strong></td><td>Naming specific faculty, concentrations, opportunities</td><td>Generic "your program is prestigious" statements</td></tr>
+      <tr><td><strong>Writing quality</strong></td><td>Clear, concise, authentic voice</td><td>Over-writing, cliches, or trying to sound academic</td></tr>
+      <tr><td><strong>Leadership & impact</strong></td><td>Demonstrated initiative, not just participation</td><td>Only listing titles without describing impact</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Your Competitive Advantages</h3>
+  <p style="font-size:12px;color:var(--light);margin-bottom:12px;">List 3–5 unique strengths that set you apart from other applicants.</p>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+
+  <h3 style="margin-top:20px;">Areas to Strengthen Before Applying</h3>
+  <p style="font-size:12px;color:var(--light);margin-bottom:12px;">Identify gaps in your profile and how you'll address them.</p>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+  <div class="write-line"></div>
+
+  <div class="page-footer">Yes Admissions Studio · sarahwangmph.com</div>
+  <div class="page-num">7</div>
+</div>
+
+<!-- ==================== PAGE 8: NOTES & NEXT STEPS ==================== -->
+<div class="page content-page">
+  <div class="section-tag">Notes & Next Steps</div>
+  <h2 class="serif">Your <strong>Action Plan</strong></h2>
+  <div class="gold-line"></div>
+
+  <h3>Workshop Notes</h3>
+  <div class="write-line"></div><div class="write-line"></div><div class="write-line"></div>
+  <div class="write-line"></div><div class="write-line"></div>
+
+  <h3 style="margin-top:18px;">My Top 3 Action Items This Week</h3>
+  <div style="margin-top:8px;">
+    <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text" style="font-size:14px;">1. <div class="write-line" style="display:inline-block;width:85%;vertical-align:middle;"></div></div></div>
+    <div style="height:4px;"></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text" style="font-size:14px;">2. <div class="write-line" style="display:inline-block;width:85%;vertical-align:middle;"></div></div></div>
+    <div style="height:4px;"></div>
+    <div class="checkbox-row"><div class="checkbox"></div><div class="checkbox-text" style="font-size:14px;">3. <div class="write-line" style="display:inline-block;width:85%;vertical-align:middle;"></div></div></div>
+  </div>
+
+  <div style="margin-top:18px;background:linear-gradient(135deg,var(--navy),var(--navyL));border-radius:16px;padding:20px;text-align:center;">
+    <p class="serif" style="font-size:22px;color:#fff;font-weight:300;margin-bottom:6px;">Ready for <span style="color:var(--gold);font-weight:600;">personalized guidance?</span></p>
+    <p class="sans" style="font-size:13px;color:var(--goldL);margin-bottom:14px;">Work 1-on-1 with Sarah to build your strongest possible application.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;">
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:10px 14px;text-align:center;">
+        <div class="sans" style="font-size:11px;color:var(--goldL);margin-bottom:4px;">FREE</div>
+        <div class="sans" style="font-size:14px;color:#fff;font-weight:600;">Fit Call</div>
+        <div class="sans" style="font-size:11px;color:var(--gray);">15 min</div>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:10px 14px;text-align:center;">
+        <div class="sans" style="font-size:11px;color:var(--goldL);margin-bottom:4px;">$250/HR</div>
+        <div class="sans" style="font-size:14px;color:#fff;font-weight:600;">Strategy Session</div>
+        <div class="sans" style="font-size:11px;color:var(--gray);">Focused deep-dive</div>
+      </div>
+      <div style="background:rgba(212,115,110,0.1);border:1px solid rgba(212,115,110,0.25);border-radius:10px;padding:10px 14px;text-align:center;">
+        <div class="sans" style="font-size:11px;color:var(--rose);margin-bottom:4px;">$3,500</div>
+        <div class="sans" style="font-size:14px;color:#fff;font-weight:600;">Application Architect</div>
+        <div class="sans" style="font-size:11px;color:var(--gray);">Full cycle, 5 schools</div>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:10px;padding:10px 14px;text-align:center;">
+        <div class="sans" style="font-size:11px;color:var(--goldL);margin-bottom:4px;">$6,500</div>
+        <div class="sans" style="font-size:14px;color:#fff;font-weight:600;">Full Admission Suite</div>
+        <div class="sans" style="font-size:11px;color:var(--gray);">White-glove, 10 schools</div>
+      </div>
+    </div>
+    <div style="background:var(--gold);border-radius:10px;padding:12px 20px;display:inline-block;">
+      <div class="sans" style="font-size:16px;font-weight:700;color:var(--navy);">Book a Free Fit Call → sarahwangmph.com</div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="sans" style="font-size:12px;color:var(--gray);">sarahwangmph@gmail.com · linkedin.com/in/sarahjmwang</span>
+    </div>
+  </div>
+
+  <div class="page-num">8</div>
+</div>
+
+</body>
+</html>
