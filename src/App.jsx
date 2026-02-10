@@ -24,8 +24,13 @@ const svcs = [
 const dm = "'DM Sans', sans-serif";
 const cr = "'Crimson Pro', serif";
 
+const GCAL_URL = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Free+MPH+Admissions+Workshop+%E2%80%94+Yes+Admissions+Studio&dates=20260228T180000Z/20260228T193000Z&details=Free+live+workshop+hosted+by+Sarah+J.M.+Wang%2C+MPH+%28Harvard+Chan+%2725%29%0A%0AJoin+via+Google+Meet%3A+MEET_LINK_HERE%0A%0AWhat+we%27ll+cover%3A%0A%E2%80%A2+How+to+build+a+competitive+MPH+application%0A%E2%80%A2+School+selection+strategy+for+top+programs%0A%E2%80%A2+Personal+statement+frameworks%0A%E2%80%A2+SOPHAS+optimization+%26+timeline+management%0A%E2%80%A2+What+admissions+committees+look+for%0A%E2%80%A2+Live+Q%26A%0A%0Asarahwangmph.com&location=Google+Meet";
+
 export default function App() {
-  const [tab, setTab] = useState("home");
+  const [tab, setTab] = useState(() => {
+    if (typeof window !== "undefined" && window.location.search.includes("registered=true")) return "confirmed";
+    return "home";
+  });
 
   const Nav = () => (
     <nav style={{ position: "sticky", top: 0, zIndex: 100, background: C.navy, padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `2px solid ${C.gold}`, boxShadow: "0 4px 20px rgba(0,0,0,.15)" }}>
@@ -206,7 +211,7 @@ export default function App() {
               <input type="hidden" name="_subject" value="New Workshop Registration – Feb 28" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_next" value="https://sarahwangmph.com" />
+              <input type="hidden" name="_next" value="https://sarahwangmph.com?registered=true" />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                 <input name="First Name" placeholder="First name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
                 <input name="Last Name" placeholder="Last name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
@@ -228,6 +233,27 @@ export default function App() {
     </div>
   );
 
+  const Confirmed = () => (
+    <div style={{ padding: "48px 24px", maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+      <div style={{ background: `linear-gradient(135deg, ${C.navy}, #2a3158)`, borderRadius: 20, padding: "60px 40px", boxShadow: "0 12px 40px rgba(26,31,58,.3)", border: `1.5px solid ${C.gold}30` }}>
+        <div style={{ width: 80, height: 80, borderRadius: "50%", background: `linear-gradient(135deg, ${C.gold}, ${C.rose})`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", fontSize: 40 }}>✓</div>
+        <h1 style={{ color: C.white, fontSize: 32, fontWeight: 300, marginBottom: 8 }}>You're <span style={{ color: C.gold, fontWeight: 600 }}>registered!</span></h1>
+        <p style={{ fontFamily: dm, color: C.goldL, fontSize: 16, marginBottom: 32, lineHeight: 1.6 }}>You'll receive a confirmation email at the address you provided.<br />Add the event to your calendar so you don't miss it.</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "center", marginBottom: 32 }}>
+          <a href={GCAL_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: C.gold, color: C.navy, border: "none", padding: "16px 36px", borderRadius: 10, fontWeight: 700, fontFamily: dm, fontSize: 16, cursor: "pointer", textDecoration: "none" }}>📅 Add to Google Calendar</a>
+        </div>
+        <div style={{ background: C.navyL, borderRadius: 12, padding: "20px 24px", marginBottom: 24, border: `1px solid ${C.gold}15` }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, textAlign: "center" }}>
+            <div><div style={{ fontFamily: dm, fontSize: 12, color: C.gray, marginBottom: 4 }}>DATE</div><div style={{ fontFamily: dm, fontSize: 15, color: C.white, fontWeight: 600 }}>Saturday, Feb 28, 2026</div></div>
+            <div><div style={{ fontFamily: dm, fontSize: 12, color: C.gray, marginBottom: 4 }}>TIME</div><div style={{ fontFamily: dm, fontSize: 15, color: C.white, fontWeight: 600 }}>1:00 PM EST</div></div>
+          </div>
+        </div>
+        <p style={{ fontFamily: dm, fontSize: 13, color: C.gray }}>Questions? Reach out at sarahwangmph@gmail.com</p>
+        <button onClick={() => { window.history.replaceState({}, "", "/"); setTab("home"); }} style={{ marginTop: 20, background: "transparent", color: C.goldL, border: `1px solid ${C.gold}40`, padding: "10px 24px", borderRadius: 8, fontFamily: dm, fontSize: 13, cursor: "pointer" }}>← Back to Home</button>
+      </div>
+    </div>
+  );
+
   return (
     <div style={{ fontFamily: `${cr}`, background: C.cream, minHeight: "100vh", color: C.dark }}>
       <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -235,6 +261,7 @@ export default function App() {
       {tab === "home" && <Home />}
       {tab === "services" && <Services />}
       {tab === "event" && <Event />}
+      {tab === "confirmed" && <Confirmed />}
       <footer style={{ background: C.navy, padding: "24px 32px", textAlign: "center", borderTop: `1px solid ${C.gold}20` }}>
         <p style={{ fontFamily: dm, fontSize: 12, color: C.gray, margin: 0 }}>© 2026 Yes Admissions Studio — Sarah J.M. Wang, MPH · sarahwangmph@gmail.com</p>
       </footer>
