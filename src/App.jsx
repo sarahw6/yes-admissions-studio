@@ -110,7 +110,7 @@ export default function App() {
   const Services = () => (
     <div style={{ padding: "48px 24px", maxWidth: 1100, margin: "0 auto" }}>
       <h2 style={{ fontSize: 32, fontWeight: 300, textAlign: "center", marginBottom: 8 }}>Services & <span style={{ fontWeight: 600 }}>Pricing</span></h2>
-      <p style={{ textAlign: "center", fontFamily: dm, color: C.light, fontSize: 15, maxWidth: 600, margin: "0 auto 12px" }}>Designed for graduate-level applicants targeting professional programs — MPH, MHA, DrPH, PhD in public health, and dual degrees.</p>
+      <p style={{ textAlign: "center", fontFamily: dm, color: C.light, fontSize: 15, maxWidth: 600, margin: "0 auto 12px" }}>Designed for graduate-level applicants targeting professional programs — MPH, MSPH, MS, MHS, and MHA.</p>
       <p style={{ textAlign: "center", fontFamily: dm, color: C.gray, fontSize: 13, marginBottom: 48, fontStyle: "italic" }}>Market range: $150–$500/hr or $1,500–$7,400+ per cycle. Packages below include more hands-on support than most competitors at comparable price points.</p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 20, marginBottom: 60 }}>
         {svcs.map((s, i) => (
