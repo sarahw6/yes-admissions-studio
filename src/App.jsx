@@ -102,7 +102,7 @@ export default function App() {
       <div style={{ background: `linear-gradient(135deg, ${C.navy}, ${C.navyL})`, padding: "48px 32px", textAlign: "center" }}>
         <h3 style={{ color: C.white, fontSize: 24, fontWeight: 300, marginBottom: 8 }}>Ready to build your application strategy?</h3>
         <a href="https://calendly.com/sarahwangmph/10-minute-meeting" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: C.gold, color: C.navy, fontFamily: dm, fontSize: 15, fontWeight: 700, padding: "14px 36px", borderRadius: 8, textDecoration: "none", marginBottom: 24, cursor: "pointer" }}>Book a 10-Minute Fit Call</a>
-        <div style={{ fontFamily: dm, fontSize: 13, color: C.goldL }}>✉️ sarahwangmph@gmail.com  |  🔗 linkedin.com/in/sarahjmwang</div>
+        <div style={{ fontFamily: dm, fontSize: 13, color: C.goldL }}>✉️ <a href="mailto:sarahwangmph@gmail.com" style={{ color: C.goldL, textDecoration: "none" }}>sarahwangmph@gmail.com</a>  |  🔗 <a href="https://linkedin.com/in/sarahjmwang" target="_blank" rel="noopener noreferrer" style={{ color: C.goldL, textDecoration: "none" }}>linkedin.com/in/sarahjmwang</a></div>
       </div>
     </div>
   );
