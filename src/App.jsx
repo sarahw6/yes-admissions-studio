@@ -213,9 +213,9 @@ export default function App() {
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_next" value="https://sarahwangmph.com?registered=true" />
               <input type="hidden" name="_autoresponse" value="Thanks for registering for the Free MPH Admissions Workshop on Saturday, Feb 28 at 1:00 PM EST! Join via Google Meet: https://meet.google.com/kmp-gytu-wuw — Download your workshop workbook: https://sarahwangmph.com/workbook.pdf — Questions? Reply to this email or reach out at sarahwangmph@gmail.com. See you there! – Sarah" />
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                <input name="First Name" placeholder="First name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
-                <input name="Last Name" placeholder="Last name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
+                <input name="First Name" placeholder="First name" required style={{ flex: "1 1 140px", minWidth: 0, padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none", boxSizing: "border-box" }} />
+                <input name="Last Name" placeholder="Last name" required style={{ flex: "1 1 140px", minWidth: 0, padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none", boxSizing: "border-box" }} />
               </div>
               <input name="email" type="email" placeholder="Email address" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
               <select name="MPH Interest" defaultValue="" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none", appearance: "auto" }}>
