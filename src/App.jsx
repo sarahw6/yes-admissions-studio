@@ -97,7 +97,7 @@ export default function App() {
       <div style={{ background: `linear-gradient(135deg, ${C.navy}, ${C.navyL})`, padding: "48px 32px", textAlign: "center" }}>
         <h3 style={{ color: C.white, fontSize: 24, fontWeight: 300, marginBottom: 8 }}>Ready to build your application strategy?</h3>
         <p style={{ color: C.goldL, fontFamily: dm, fontSize: 14, marginBottom: 24 }}>Book a free 15-minute fit call</p>
-        <div style={{ fontFamily: dm, fontSize: 13, color: C.goldL }}>✉️ sarah_wang@hsph.harvard.edu  |  🔗 linkedin.com/in/sarahjmwang</div>
+        <div style={{ fontFamily: dm, fontSize: 13, color: C.goldL }}>✉️ sarahwangmph@gmail.com  |  🔗 linkedin.com/in/sarahjmwang</div>
       </div>
     </div>
   );
@@ -201,8 +201,8 @@ export default function App() {
             ))}
           </div>
           <div style={{ textAlign: "center" }}>
-            <button style={{ background: C.gold, color: C.navy, border: "none", padding: "16px 48px", borderRadius: 10, fontWeight: 700, fontFamily: dm, fontSize: 16, cursor: "pointer" }}>Register Free</button>
-            <div style={{ marginTop: 20, fontFamily: dm, fontSize: 13, color: C.gray }}>✉️ sarah_wang@hsph.harvard.edu · 🔗 linkedin.com/in/sarahjmwang</div>
+            <a href="mailto:sarahwangmph@gmail.com?subject=Workshop%20Registration%20–%20Feb%2028" style={{ display: "inline-block", background: C.gold, color: C.navy, border: "none", padding: "16px 48px", borderRadius: 10, fontWeight: 700, fontFamily: dm, fontSize: 16, cursor: "pointer", textDecoration: "none" }}>Register Free</a>
+            <div style={{ marginTop: 20, fontFamily: dm, fontSize: 13, color: C.gray }}>✉️ sarahwangmph@gmail.com · 🔗 linkedin.com/in/sarahjmwang</div>
           </div>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function App() {
       {tab === "services" && <Services />}
       {tab === "event" && <Event />}
       <footer style={{ background: C.navy, padding: "24px 32px", textAlign: "center", borderTop: `1px solid ${C.gold}20` }}>
-        <p style={{ fontFamily: dm, fontSize: 12, color: C.gray, margin: 0 }}>© 2026 Yes Admissions Studio — Sarah J.M. Wang, MPH · sarah_wang@hsph.harvard.edu</p>
+        <p style={{ fontFamily: dm, fontSize: 12, color: C.gray, margin: 0 }}>© 2026 Yes Admissions Studio — Sarah J.M. Wang, MPH · sarahwangmph@gmail.com</p>
       </footer>
     </div>
   );
