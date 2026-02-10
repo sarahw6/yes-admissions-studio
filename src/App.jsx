@@ -24,7 +24,7 @@ const svcs = [
 const dm = "'DM Sans', sans-serif";
 const cr = "'Crimson Pro', serif";
 
-const GCAL_URL = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Free+MPH+Admissions+Workshop+%E2%80%94+Yes+Admissions+Studio&dates=20260228T180000Z/20260228T193000Z&details=Free+live+workshop+hosted+by+Sarah+J.M.+Wang%2C+MPH+%28Harvard+Chan+%2725%29%0A%0AJoin+via+Google+Meet%3A+MEET_LINK_HERE%0A%0AWhat+we%27ll+cover%3A%0A%E2%80%A2+How+to+build+a+competitive+MPH+application%0A%E2%80%A2+School+selection+strategy+for+top+programs%0A%E2%80%A2+Personal+statement+frameworks%0A%E2%80%A2+SOPHAS+optimization+%26+timeline+management%0A%E2%80%A2+What+admissions+committees+look+for%0A%E2%80%A2+Live+Q%26A%0A%0Asarahwangmph.com&location=Google+Meet";
+const GCAL_URL = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Free+MPH+Admissions+Workshop+%E2%80%94+Yes+Admissions+Studio&dates=20260228T180000Z/20260228T193000Z&details=Free+live+workshop+hosted+by+Sarah+J.M.+Wang%2C+MPH+%28Harvard+Chan+%2725%29%0A%0AJoin+via+Google+Meet%3A+https%3A%2F%2Fmeet.google.com%2Fkmp-gytu-wuw%0A%0AWhat+we%27ll+cover%3A%0A%E2%80%A2+How+to+build+a+competitive+MPH+application%0A%E2%80%A2+School+selection+strategy+for+top+programs%0A%E2%80%A2+Personal+statement+frameworks%0A%E2%80%A2+SOPHAS+optimization+%26+timeline+management%0A%E2%80%A2+What+admissions+committees+look+for%0A%E2%80%A2+Live+Q%26A%0A%0Asarahwangmph.com&location=Google+Meet";
 
 export default function App() {
   const [tab, setTab] = useState(() => {
