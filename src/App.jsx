@@ -15,10 +15,10 @@ const schools = [
 ];
 
 const svcs = [
-  { t: "Fit Call", p: "Free", u: "15 min", d: "See if we're the right match. No pressure — just an honest assessment of where you stand.", f: ["Quick profile review", "Candid competitiveness read", "Recommended next steps"], a: C.gray, pop: false },
-  { t: "Strategy Session", p: "$250", u: "per hour", d: "A focused hour for applicants who need targeted guidance on a specific part of their application.", f: ["60-min deep-dive on one focus area", "School list review OR essay feedback OR interview prep", "Written follow-up summary within 48 hrs", "Book as many as you need"], a: C.gold, pop: false },
-  { t: "Application Architect", p: "$3,500", u: "up to 5 schools", d: "End-to-end application support with strategy, essays, and interview prep.", f: ["Comprehensive profile audit & school selection", "Personal statement (unlimited drafts)", "Resume/CV overhaul for SOPHAS", "5 school-specific supplemental essays", "Recommendation letter strategy & coaching", "2 mock interview sessions", "SOPHAS optimization & timeline management", "Async support via Slack or email"], a: C.rose, pop: true },
-  { t: "Full Admission Suite", p: "$6,500", u: "up to 10 schools", d: "White-glove, all-in support for applicants targeting only the top tier.", f: ["Everything in Application Architect", "Up to 10 school applications", "Scholarship & fellowship application strategy", "Faculty outreach coaching", "Waitlist & deferral negotiation", "Post-admission offer comparison & negotiation", "6 months of async mentorship", "Priority scheduling & 24-hr turnaround on drafts"], a: C.navy, pop: false },
+  { t: "Fit Call", p: "Free", u: "10 min", d: "See if we're the right match. No pressure — just an honest assessment of where you stand.", f: ["Quick profile review", "Candid competitiveness read", "Recommended next steps"], a: C.gray, pop: false },
+  { t: "Strategy Session", p: "$125", u: "per hour", d: "A focused hour for applicants who need targeted guidance on a specific part of their application.", f: ["60-min deep-dive on one focus area", "School list review OR essay feedback OR interview prep", "Written follow-up summary within 48 hrs", "Book as many as you need"], a: C.gold, pop: false },
+  { t: "Application Architect", p: "$2,250", u: "up to 5 schools", d: "End-to-end application support with strategy, essays, and interview prep.", f: ["Comprehensive profile audit & school selection", "Personal statement (unlimited drafts)", "Resume/CV overhaul for SOPHAS", "5 school-specific supplemental essays", "Recommendation letter strategy & coaching", "2 mock interview sessions", "SOPHAS optimization & timeline management", "Async support via Slack or email"], a: C.rose, pop: true },
+  { t: "Full Admission Suite", p: "$3,750", u: "up to 10 schools", d: "White-glove, all-in support for applicants targeting only the top tier.", f: ["Everything in Application Architect", "Up to 10 school applications", "Scholarship & fellowship application strategy", "Faculty outreach coaching", "Waitlist & deferral negotiation", "Post-admission offer comparison & negotiation", "6 months of async mentorship", "Priority scheduling & 24-hr turnaround on drafts"], a: C.navy, pop: false },
 ];
 
 const dm = "'DM Sans', sans-serif";
@@ -101,7 +101,7 @@ export default function App() {
       </div>
       <div style={{ background: `linear-gradient(135deg, ${C.navy}, ${C.navyL})`, padding: "48px 32px", textAlign: "center" }}>
         <h3 style={{ color: C.white, fontSize: 24, fontWeight: 300, marginBottom: 8 }}>Ready to build your application strategy?</h3>
-        <p style={{ color: C.goldL, fontFamily: dm, fontSize: 14, marginBottom: 24 }}>Book a free 15-minute fit call</p>
+        <a href="https://calendly.com/sarahwangmph/10-minute-meeting" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: C.gold, color: C.navy, fontFamily: dm, fontSize: 15, fontWeight: 700, padding: "14px 36px", borderRadius: 8, textDecoration: "none", marginBottom: 24, cursor: "pointer" }}>Book a 10-Minute Fit Call</a>
         <div style={{ fontFamily: dm, fontSize: 13, color: C.goldL }}>✉️ sarahwangmph@gmail.com  |  🔗 linkedin.com/in/sarahjmwang</div>
       </div>
     </div>
@@ -130,7 +130,7 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <button style={{ marginTop: 16, width: "100%", padding: "11px", background: s.pop ? s.a : "transparent", color: s.pop ? C.white : s.a, border: `1.5px solid ${s.a}`, borderRadius: 8, fontFamily: dm, fontWeight: 700, fontSize: 13, cursor: "pointer" }}>{s.p === "Free" ? "Book Free Call" : "Get Started"}</button>
+            <a href="https://calendly.com/sarahwangmph/10-minute-meeting" target="_blank" rel="noopener noreferrer" style={{ display: "block", marginTop: 16, width: "100%", padding: "11px", background: s.pop ? s.a : "transparent", color: s.pop ? C.white : s.a, border: `1.5px solid ${s.a}`, borderRadius: 8, fontFamily: dm, fontWeight: 700, fontSize: 13, cursor: "pointer", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>{s.p === "Free" ? "Book a 10-Minute Fit Call" : "Get Started"}</a>
           </div>
         ))}
       </div>
@@ -144,7 +144,7 @@ export default function App() {
               ))}
             </tr></thead>
             <tbody>
-              {[["Hourly rate","$250/hr","$150–$350/hr","$150–$350/hr","$200–$500/hr"],["Full cycle (5 schools)","$3,500","$2,500–$5,000","$4,000–$5,500","$5,000–$7,400"],["Full cycle (10 schools)","$6,500","$4,000–$7,000+","$5,500–$7,400","$7,000–$10,000+"],["Background","4/4 Ivy MPH admits","Varies widely","Former adcom","Varies"],["Unlimited essay drafts","✓","Often capped","Extra fee","Often capped"],["Async Slack support","✓","Sometimes","Email only","Email only"],["MPH-specific expertise","Deep","Generalist","Generalist","Generalist"]].map((row, ri) => (
+              {[["Hourly rate","$125/hr","$150–$350/hr","$150–$350/hr","$200–$500/hr"],["Full cycle (5 schools)","$2,250","$2,500–$5,000","$4,000–$5,500","$5,000–$7,400"],["Full cycle (10 schools)","$3,750","$4,000–$7,000+","$5,500–$7,400","$7,000–$10,000+"],["Background","4/4 Ivy MPH admits","Varies widely","Former adcom","Varies"],["Unlimited essay drafts","✓","Often capped","Extra fee","Often capped"],["Async Slack support","✓","Sometimes","Email only","Email only"],["MPH-specific expertise","Deep","Generalist","Generalist","Generalist"]].map((row, ri) => (
                 <tr key={ri} style={{ borderBottom: "1px solid #f0ede8" }}>
                   {row.map((cell, ci) => (<td key={ci} style={{ padding: "10px 14px", textAlign: ci ? "center" : "left", fontWeight: ci === 0 ? 600 : 400, color: ci === 1 ? C.rose : C.dark, background: ci === 1 ? `${C.rose}06` : "transparent" }}>{cell}</td>))}
                 </tr>
@@ -212,6 +212,7 @@ export default function App() {
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_next" value="https://sarahwangmph.com?registered=true" />
+              <input type="hidden" name="_autoresponse" value="Thanks for registering for the Free MPH Admissions Workshop on Saturday, Feb 28 at 1:00 PM EST! Join via Google Meet: https://meet.google.com/kmp-gytu-wuw — Download your workshop workbook: https://sarahwangmph.com/workbook.pdf — Questions? Reply to this email or reach out at sarahwangmph@gmail.com. See you there! – Sarah" />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                 <input name="First Name" placeholder="First name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
                 <input name="Last Name" placeholder="Last name" required style={{ padding: "12px 16px", borderRadius: 8, border: `1px solid ${C.gold}30`, background: C.navy, color: C.white, fontFamily: dm, fontSize: 14, outline: "none" }} />
@@ -241,6 +242,7 @@ export default function App() {
         <p style={{ fontFamily: dm, color: C.goldL, fontSize: 16, marginBottom: 32, lineHeight: 1.6 }}>You'll receive a confirmation email at the address you provided.<br />Add the event to your calendar so you don't miss it.</p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, alignItems: "center", marginBottom: 32 }}>
           <a href={GCAL_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: C.gold, color: C.navy, border: "none", padding: "16px 36px", borderRadius: 10, fontWeight: 700, fontFamily: dm, fontSize: 16, cursor: "pointer", textDecoration: "none" }}>📅 Add to Google Calendar</a>
+          <a href="/workbook.pdf" download style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "transparent", color: C.gold, border: `1.5px solid ${C.gold}`, padding: "16px 36px", borderRadius: 10, fontWeight: 700, fontFamily: dm, fontSize: 16, cursor: "pointer", textDecoration: "none" }}>📓 Download Workshop Workbook</a>
         </div>
         <div style={{ background: C.navyL, borderRadius: 12, padding: "20px 24px", marginBottom: 24, border: `1px solid ${C.gold}15` }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, textAlign: "center" }}>
